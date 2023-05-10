@@ -558,13 +558,13 @@ plotOptions: {
 },
 colors: colorPalette,
 title: {
-  text: 'Department Sales',
+  text: 'Complications',
   style: {
     fontSize: '18px'
   }
 },
 series: [21, 23, 19, 14, 6],
-labels: ['Clothing', 'Food Products', 'Electronics', 'Kitchen Utility', 'Gardening'],
+labels: ['PPH', 'APH', 'Labour', 'Breech', 'Underweight'],
 legend: {
   position: 'left',
   offsetY: 80
@@ -593,27 +593,56 @@ for (var i = 0; i < cnt; i++) {
 return data;
 }
 
-var options = {
-        series: [44, 55, 41, 17, 15],
-        chart: {
-        type: 'donut',
-          height: 400
+var optionDonut = {
+  chart: {
+      type: 'donut',
+      width: '100%',
+      height: 400
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  tooltip: {
+    intersect: true,
+    shared: false,
+  },
+  plotOptions: {
+    pie: {
+      customScale: 0.8,
+      donut: {
+        size: '75%',
       },
-      responsive: [{
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 30
-          },
-          legend: {
-            position: 'bottom'
-          }
-        }
-      }]
-      };
-
-      var chart = new ApexCharts(document.querySelector(".chart4"), options);
-      chart.render();
-    
-    
+      offsetY: 20,
+    },
+    stroke: {
+      colors: undefined
+    }
+  },
+  
+  colors: colorPalette,
+  title: {
+    text: 'Status',
+    style: {
+      fontSize: '18px'
+    }
+  },
+  series: [50,1232],
+  labels: ['positive', 'Negative'],
+  legend: {
+    position: 'left',
+    offsetY: 80
+  }
+  }
+  
+  var donut = new ApexCharts(
+  document.querySelector(".chart4"),
+  optionDonut
+  )
+  donut.render();
+  
+  var donut = new ApexCharts(
+  document.querySelector("#donut"),
+  optionDonut
+  )
+  donut.render();
   
